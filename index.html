@@ -6,20 +6,65 @@
 	<style>
 		body{
 			margin: 0;
-			padding: 0;
 			height:100%;
 		}
 		html{
 			height:100%;
 		}
+		h2{
+			margin: 0;
+		}
 		#mask{
 			height:100%;
-			background:url();
+			background:url(bg.jpg);
 			background-size:cover;
+			/*cover是缩放背景图片以完全覆盖背景区，可能背景图片部分看不见，contain是缩放背景图片以完全装入背景区，可能背景区部分空白*/
+			filter:blur(5px);
+			/*css滤镜：可用blur设置模糊，brightness设置明暗程度，contrast设置对比度，drop-shadow设置阴影等等效果*/
+		}
+		.popup{
+			width: 520px;
+			height: 640px;
+			background:#fff;
+			position: absolute;
+			left:50%;
+			top:50%;
+			margin-left:-260px;
+			margin-top:-320px;
+			/*要使一个块居中，，不仅left和top要设为50%，还要按自身宽高的50%向坐上做一定移动*/
+			border: 1px solid #fff;
+			background-clip:content-box;
+			/*背景裁切，content-box是值只有content的部分才是这个背景，padding部分的背景是按外层盒子来的
+			padding:10px;*/
+			border-radius:10px;
+			/*设置圆角*/
+		}
+		.title{
+			text-align:center;
+			font-size:28px;
+			margin:24px 0;
+			background:linear-gradient(
+				transparent 49%,
+				#000 49%,
+				#000 51%,
+				transparent 51%
+			 );
+			/*线性渐变，先是透明色到49%，然后变成黑色，黑色覆盖到51%后变成透明色一直到最后*/
+		}
+		.title span{
+			padding:0 20px;
+			background:#fff;
 		}
 	</style>
 </head>
 <body>
-	<div id="mask"></div>
+	<div id="mask">
+		
+	</div>
+	<div class="popup">
+		<h2 class="title">
+			<span>用户注册</span>
+		</h2>
+	</div>
 </body>
 </html>
