@@ -25,7 +25,7 @@
 		.popup{
 			width: 520px;
 			height: 640px;
-			background:#fff;
+			background:rgba(255, 255, 255, 0.8);
 			position: absolute;
 			left:50%;
 			top:50%;
@@ -43,6 +43,13 @@
 			text-align:center;
 			font-size:28px;
 			margin:24px 0;
+			display:flex;
+			/*弹性盒模型的父级*/
+		}
+		.title .title_name{
+			padding:0 20px;
+		}
+		.title .line{
 			background:linear-gradient(
 				transparent 49%,
 				#000 49%,
@@ -50,10 +57,11 @@
 				transparent 51%
 			 );
 			/*线性渐变，先是透明色到49%，然后变成黑色，黑色覆盖到51%后变成透明色一直到最后*/
+			flex:1;
+			/*将富裕空间等宽显示*/
 		}
-		.title span{
-			padding:0 20px;
-			background:#fff;
+		table{
+			width: 100%;
 		}
 	</style>
 </head>
@@ -63,8 +71,52 @@
 	</div>
 	<div class="popup">
 		<h2 class="title">
-			<span>用户注册</span>
+			<span class="line"></span>
+			<span class="title_name">用户注册</span>
+			<span class="line"></span>
 		</h2>
+		<table>
+			<tbody>
+				<tr>
+					<td class="td_left">姓名：</td>
+					<td><input type="text"></td>
+				</tr>
+				<tr>
+					<td class="td_left">密码：</td>
+					<td><input type="password"></td>
+				</tr>
+				<tr>
+					<td class="td_left">确认密码：</td>
+					<td><input type="password"></td>
+				</tr>
+				<tr>
+					<td class="td_left">性别：</td>
+					<td>
+						<input type="radio" name="gender">男
+						<input type="radio" name="gender">女
+					</td>
+				</tr>
+				<tr>
+					<td class="td_left">喜欢吃的菜系：</td>
+					<td>
+						<input type="checkbox" name="food">川菜
+						<input type="checkbox" name="food">湘菜
+						<input type="checkbox" name="food">粤菜
+					</td>
+				</tr>
+				<tr>
+					<td class="td_left">个人简介：</td>
+					<td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+				</tr>
+				<tr>
+					<td class="td_left"></td>
+					<td>
+						<input type="submit">
+						<input type="reset">
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
