@@ -63,6 +63,119 @@
 		table{
 			width: 100%;
 		}
+		input,textarea{
+			padding:0;
+			outline:none;
+			/*去除轮廓*/
+		}
+		.td_left{
+			text-align:right;
+			/*表格左边的文字都右对齐*/
+			font-size:18px;
+			width:150px;
+		}
+		.td_right input[type="text"],.td_right input[type="password"]{
+			height: 40px;
+			width: 230px;
+			background:transparent;
+			border:none;
+			border-bottom:2px solid #999;
+			text-indent:20px;
+			transition:0.3s;
+		}
+		.td_right input[type="text"]:hover,.td_right input[type="password"]:hover{
+			border-color:#888;
+		}
+		.popup tr{
+			height: 65px;	
+		}
+		.td_right input[type="textarea"]{
+			width: 254px;	
+			height: 100px;	
+		}
+		.btn input{
+			width: 100px;	
+			height: 30px;	
+			background:#362e2b;
+			color: #fff;
+		}
+		tr.des{
+        	height: 120px;
+		}
+	    .td_right input[type="text"]:focus,.td_right input[type="password"]:focus{
+	        border-bottom-color: #562d2b;
+	    }
+	    .td_right input[type="text"]:focus~.move:after{
+	        transform: translateX(220px);
+	    }
+	    .td_right input[type="password"]::-webkit-input-placeholder,.td_right input[type="text"]::-webkit-input-placeholder{
+	        transition: 0.5s;
+	        font-size: 14px;
+	        transform-origin: top left;
+	    }
+	    .td_right input[type="password"]:focus::-webkit-input-placeholder,.td_right input[type="text"]:focus::-webkit-input-placeholder{
+	        transform: scale(0.8) translateY(-15px);
+	        /*这里3处是用到了css3里面的方法，使placeholder的文字沿着左上角做缩放以及按垂直方向平移*/
+	    }
+	    input[name="gender"]{
+	        display: none;
+	    }
+	    .sex{
+	        padding-left: 30px;
+	        position: relative;
+	    }
+	   /* 这里是因为原生单选按钮并不能改变颜色，因此用的增加伪类的方法，模拟了一个圆出来*/
+	    .sex:before{
+	        content: '';
+	        display: inline-block;
+	        width: 8px;
+	        height: 8px;
+	        border: 1px solid #000;
+	        border-radius: 50%;
+	        position:absolute;
+	        right: 22px;
+	        top: 1px;
+	        padding:5px;
+	    }
+	    input[name="gender"]:checked+label:before{
+	        background: #362e2b;
+	        background-clip: content-box;
+	    }
+	    input[name="food"]{
+	        display: none;
+	    }
+	    .menu{
+	        width: 15px;
+	        height: 15px;
+	        border: 1px solid #000;
+	        border-radius: 3px;
+	        display: inline-block;
+	        margin-right: 5px;
+	        position: relative;
+	    }
+	     /*这里是因为原生原生多选框并不能改变样式，因此用的增加伪类的方法，模拟了一个勾出来，而这个勾也是分成2笔出来的，其实就是2个变形后的div，用到了css3里面的旋转*/
+	    input[name="food"]:checked+ .menu:after{
+	        content: '';
+	        width: 2px;
+	        height: 7px;
+	        background: black;
+	        display: inline-block;
+	        transform: rotate(135deg);
+	        position: absolute;
+	        left:4px;
+	        top: 10px;
+	    }
+	    input[name="food"]:checked+ .menu:before{
+	        content: '';
+	        width: 2px;
+	        height: 15px;
+	        background: black;
+	        display: inline-block;
+	        transform: rotate(20deg);
+	        position: absolute;
+	        left:10px;
+	        top: 2px;
+	    }
 	</style>
 </head>
 <body>
@@ -75,48 +188,51 @@
 			<span class="title_name">用户注册</span>
 			<span class="line"></span>
 		</h2>
-		<table>
-			<tbody>
-				<tr>
-					<td class="td_left">姓名：</td>
-					<td><input type="text"></td>
-				</tr>
-				<tr>
-					<td class="td_left">密码：</td>
-					<td><input type="password"></td>
-				</tr>
-				<tr>
-					<td class="td_left">确认密码：</td>
-					<td><input type="password"></td>
-				</tr>
-				<tr>
-					<td class="td_left">性别：</td>
-					<td>
-						<input type="radio" name="gender">男
-						<input type="radio" name="gender">女
-					</td>
-				</tr>
-				<tr>
-					<td class="td_left">喜欢吃的菜系：</td>
-					<td>
-						<input type="checkbox" name="food">川菜
-						<input type="checkbox" name="food">湘菜
-						<input type="checkbox" name="food">粤菜
-					</td>
-				</tr>
-				<tr>
-					<td class="td_left">个人简介：</td>
-					<td><textarea name="" id="" cols="30" rows="10"></textarea></td>
-				</tr>
-				<tr>
-					<td class="td_left"></td>
-					<td>
-						<input type="submit">
-						<input type="reset">
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<form action="#">
+			<table>
+				<tbody>
+					<tr>
+						<td class="td_left">姓名：</td>
+						<td class="td_right"><input type="text" placeholder="请输入您的名字"></td>
+					</tr>
+					<tr>
+						<td class="td_left">密码：</td>
+						<td class="td_right"><input type="password" placeholder="请输入密码"></td>
+					</tr>
+					<tr>
+						<td class="td_left">确认密码：</td>
+						<td class="td_right"><input type="password" placeholder="请再次输入密码"></td>
+					</tr>
+					<tr>
+						<td class="td_left">性别：</td>
+						<td>
+							<input id="man" type="radio" name="gender" value="男"><label for="man" class="sex">男</label>
+							<input id="wowan" type="radio" name="gender" value="女"><label for="wowan" class="sex">女</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="td_left">喜欢吃的菜系：</td>
+						<td class="td_right">
+							<input id="food_c" type="checkbox" name="food" value="川菜"><label for="food_c" class="menu"></label>川菜
+							<input id="food_y" type="checkbox" name="food" value="粤菜"><label for="food_y" class="menu"></label>粤菜
+							<input id="food_x" type="checkbox" name="food" value="湘菜"><label for="food_x" class="menu"></label>湘菜
+							<input id="food_l" type="checkbox" name="food" value="鲁菜"><label for="food_l" class="menu"></label>鲁菜
+						</td>
+					</tr>
+					<tr class="des">
+						<td class="td_left">个人简介：</td>
+						<td class="td_right"><textarea name="" id="" cols="30" rows="10"></textarea></td>
+					</tr>
+					<tr>
+						<td class="td_left"></td>
+						<td class="td_right btn"> 
+							<input type="submit">
+							<input type="reset">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 	</div>
 </body>
 </html>
